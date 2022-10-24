@@ -1,0 +1,963 @@
+{
+	"info": {
+		"_postman_id": "8aee4e98-a275-4f6f-b5b4-0b332deabebc",
+		"name": "API Veterinaria",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "21083470"
+	},
+	"item": [
+		{
+			"name": "Cliente",
+			"item": [
+				{
+					"name": "Novo cliente",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxIiwiaXNzIjoiUHJvZ3JhbWFTVEFSVEVSIiwiZXhwIjoxNjU5MDQxNDIyfQ.HQhnjzp08B60p8qKrpZOk6KKXH3Zbw1F9q1tf5U7cmI",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"cpf\": \"005.030.652-96\",\r\n    \"nome\": \"Lourdes Rocha\",\r\n    \"telefone\": \"(85)988721891\",\r\n    \"email\": \"lorena@gmail.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/clientes",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"clientes"
+							]
+						},
+						"description": "Novo cliente deve der cpf único. É impossível criar novo cliente com cpf já cadastrado na base de dados. Retorna erro personalizado.\n\nÉ necessário estar logado através do envio de token no Authorization.\n\nLiberado apenas para Admin."
+					},
+					"response": []
+				},
+				{
+					"name": "Buscar todos os clientes",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxIiwiaXNzIjoiUHJvZ3JhbWFTVEFSVEVSIiwiZXhwIjoxNjU5MDQxNDIyfQ.HQhnjzp08B60p8qKrpZOk6KKXH3Zbw1F9q1tf5U7cmI",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/clientes",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"clientes"
+							]
+						},
+						"description": "Retorna todos os clientes cadastrados na base de dados.\n\nApenas perfil Admin tem acesso."
+					},
+					"response": []
+				},
+				{
+					"name": "Buscar cliente por id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxIiwiaXNzIjoiUHJvZ3JhbWFTVEFSVEVSIiwiZXhwIjoxNjU5MDQxNDIyfQ.HQhnjzp08B60p8qKrpZOk6KKXH3Zbw1F9q1tf5U7cmI",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/clientes/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"clientes",
+								"1"
+							]
+						},
+						"description": "Retorna os dados de qualquer cliente informado para o perfil Admin.\n\nPara o perfil User, só retorna os seus próprios dados."
+					},
+					"response": []
+				},
+				{
+					"name": "Buscar cliente por nome",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIyIiwiaXNzIjoiUHJvZ3JhbWFTVEFSVEVSIiwiZXhwIjoxNjU5MDMyNjIwfQ.2hrmCSMfpuNhknXYhnUP_RxhPp3qO_zMYeeAosRXtlM",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/clientes/nome/santos",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"clientes",
+								"nome",
+								"santos"
+							]
+						},
+						"description": "Retorna busca por nome na base clientes."
+					},
+					"response": []
+				},
+				{
+					"name": "Listar cachorro por id de cliente",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxIiwiaXNzIjoiUHJvZ3JhbWFTVEFSVEVSIiwiZXhwIjoxNjU5MDQxNDIyfQ.HQhnjzp08B60p8qKrpZOk6KKXH3Zbw1F9q1tf5U7cmI",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/clientes/listarCachorros/2",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"clientes",
+								"listarCachorros",
+								"2"
+							]
+						},
+						"description": "Lista todos os cachorros do cliente informado no endpoint.\n\nPerfil Admin acessa todos. Perfil user só acessa os seus própios dados."
+					},
+					"response": []
+				},
+				{
+					"name": "Listar atendimento por id de cliente",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxIiwiaXNzIjoiUHJvZ3JhbWFTVEFSVEVSIiwiZXhwIjoxNjU5MDQxNDIyfQ.HQhnjzp08B60p8qKrpZOk6KKXH3Zbw1F9q1tf5U7cmI",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/clientes/listarAtendimentos/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"clientes",
+								"listarAtendimentos",
+								"1"
+							]
+						},
+						"description": "Lista todos os atendimentos de todos os cachorros de determinado cliente.\n\nPerfil Admin acessa todos. Perfil User só acessa os próprios dados."
+					},
+					"response": []
+				},
+				{
+					"name": "Alterar cliente",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxIiwiaXNzIjoiUHJvZ3JhbWFTVEFSVEVSIiwiZXhwIjoxNjU5MDQxNDIyfQ.HQhnjzp08B60p8qKrpZOk6KKXH3Zbw1F9q1tf5U7cmI",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{     \r\n    \"cpf\": \"045.044.701-10\",\r\n    \"nome\": \"Larissa Rocha\",\r\n    \"telefone\": \"(85)988721891\",\r\n    \"email\": \"user4@email.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/clientes/4",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"clientes",
+								"4"
+							]
+						},
+						"description": "Altera dados do cliente.\n\nNão se pode alterar CPFde modo que o novo número seja igual a outro existente na base de dados.\n\nApenas Admin pode alterar dados de clientes."
+					},
+					"response": []
+				},
+				{
+					"name": "Deletar cliente",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxIiwiaXNzIjoiUHJvZ3JhbWFTVEFSVEVSIiwiZXhwIjoxNjU5MDQxNDIyfQ.HQhnjzp08B60p8qKrpZOk6KKXH3Zbw1F9q1tf5U7cmI",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/clientes/5",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"clientes",
+								"5"
+							]
+						},
+						"description": "Para deletar um cliente associado a um atendimento é necessário deletar o atendimento primeiro.\n\nDeletar um cliente associado a uma lista de cachorros também deleta os relacionamentos e os cachorros.\n\nApenas Admin pode deletar."
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Cachorro",
+			"item": [
+				{
+					"name": "Novo cachorro",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxIiwiaXNzIjoiUHJvZ3JhbWFTVEFSVEVSIiwiZXhwIjoxNjU5MDQxNDIyfQ.HQhnjzp08B60p8qKrpZOk6KKXH3Zbw1F9q1tf5U7cmI",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nome\": \"Bidu\",\r\n    \"tutor\": {\r\n        \"id\": 2,\r\n        \"cpf\": \"025.035.681-20\",\r\n        \"nome\": \"Silverio Antônio Torres\",\r\n        \"telefone\": \"(18)96832-2613\",\r\n        \"email\": \"user2@email.com\"\r\n        },\r\n    \"nascimento\": \"20/01/2019\",\r\n    \"raca\": \"SRD\",\r\n    \"informacoes\": \"Paciente saudável, peso 13kg, altura 55cm\" \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/cachorros",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"cachorros"
+							]
+						},
+						"description": "Apenas usuarios com acesso Admin podem adicionar novos cachorros.\n\nTodo cachorro deve ser criado informando o seu dono (previamente cadastrado)."
+					},
+					"response": []
+				},
+				{
+					"name": "Buscar todos os cachorros",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxIiwiaXNzIjoiUHJvZ3JhbWFTVEFSVEVSIiwiZXhwIjoxNjU5MDQxNDIyfQ.HQhnjzp08B60p8qKrpZOk6KKXH3Zbw1F9q1tf5U7cmI",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/cachorros",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"cachorros"
+							]
+						},
+						"description": "Lista todos os cachorros cadastrados.\n\nDisponível apenas para usuários com acesso Admin."
+					},
+					"response": []
+				},
+				{
+					"name": "Buscar cachorro por id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIyIiwiaXNzIjoiUHJvZ3JhbWFTVEFSVEVSIiwiZXhwIjoxNjU5MDQwMDE3fQ.O_CMUgu1Kri8LswPHSHh52J8VHwycLByY41wphQq1pg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/cachorros/2",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"cachorros",
+								"2"
+							]
+						},
+						"description": "Retorna dados do cachorro informado no endpoint.\n\nUsuários Admin tem acesso liberado.\n\nUsuários do tipo User têm acesso apenas aos seus próprios animais."
+					},
+					"response": []
+				},
+				{
+					"name": "Buscar cachorro por nome",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxIiwiaXNzIjoiUHJvZ3JhbWFTVEFSVEVSIiwiZXhwIjoxNjU5MDQyMzQxfQ.VY7knoAv0PspStgDH33OMmM4hTUiHq-f5cu7r2cYr_0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/cachorros/nome/bidu",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"cachorros",
+								"nome",
+								"bidu"
+							]
+						},
+						"description": "Retorna busca por nome de cachorro ou parte dele.\n\nApenas usuários Admin tem acesso."
+					},
+					"response": []
+				},
+				{
+					"name": "Listar atendimentio por id de cachorro",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIyIiwiaXNzIjoiUHJvZ3JhbWFTVEFSVEVSIiwiZXhwIjoxNjU5MDM5MjYzfQ.2VVrXtciBAJ7_qDX2m8v8X-YA0TXEY4nLOYO--yDfCA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/cachorros/listarAtendimentos/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"cachorros",
+								"listarAtendimentos",
+								"1"
+							]
+						},
+						"description": "Retorna lista de atendimentos do cachorro informado no endpoint.\n\nUsuários Admin tem acesso liberado.\n\nUsuários do tipo User tem acesso apenas aos atendimentos dos próprios animais."
+					},
+					"response": []
+				},
+				{
+					"name": "Alterar cachorro",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxIiwiaXNzIjoiUHJvZ3JhbWFTVEFSVEVSIiwiZXhwIjoxNjU5MDQyMzQxfQ.VY7knoAv0PspStgDH33OMmM4hTUiHq-f5cu7r2cYr_0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n     \"id\": 1,\r\n        \"nome\": \"Biduzão\",\r\n        \"tutor\": {\r\n            \"id\": 1,\r\n            \"cpf\": \"052.042.883-85\",\r\n            \"nome\": \"Joana Darc dos Santos\",\r\n            \"telefone\": \"(85)98775-3520\",\r\n            \"email\": \"user1@email.com\"\r\n        },\r\n        \"nascimento\": \"20/01/2019\",\r\n        \"raca\": \"SRD\",\r\n        \"informacoes\": \"Paciente saudável, peso 13kg, altura 55cm\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/cachorros/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"cachorros",
+								"1"
+							]
+						},
+						"description": "Altera dados de um cachorro.\n\nApenas Admin tem acesso."
+					},
+					"response": []
+				},
+				{
+					"name": "Deletar cachorro",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxIiwiaXNzIjoiUHJvZ3JhbWFTVEFSVEVSIiwiZXhwIjoxNjU5MDQyMzQxfQ.VY7knoAv0PspStgDH33OMmM4hTUiHq-f5cu7r2cYr_0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/cachorros/4",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"cachorros",
+								"4"
+							]
+						},
+						"description": "É possível deletar um cachorro associado a um cliente. Esta ação deleta apenas o cachorro e o relacionamento, não o cliente.\n\nNão é possível deletar um cachorro associado a um atendimento. É necessário primeiro deletar todos os atendimentos associados.\n\nApenas usuários Admin podem deletar cachorros."
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Veterinario",
+			"item": [
+				{
+					"name": "Novo veterinario",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIyIiwiaXNzIjoiUHJvZ3JhbWFTVEFSVEVSIiwiZXhwIjoxNjU5MDM5MjYzfQ.2VVrXtciBAJ7_qDX2m8v8X-YA0TXEY4nLOYO--yDfCA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"crmv\": \"653-92\",\r\n    \"nome\": \"Tatiane Nóbrega\",\r\n    \"telefone\": \"(85)999721891\",\r\n    \"email\": \"tatianenobrega@gmail.com\",\r\n    \"especialidade\": \"Oftamologista\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/veterinarios",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"veterinarios"
+							]
+						},
+						"description": "Cria um novo veterinário. Não é possível criar veterinário se o CRMV já estiver cadastrado na base de dados. Retorna erro personalizado.\n\nApenas Admin pode criar novo veterinário."
+					},
+					"response": []
+				},
+				{
+					"name": "Buscar todos os veterinarios",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIyIiwiaXNzIjoiUHJvZ3JhbWFTVEFSVEVSIiwiZXhwIjoxNjU5MDM5MjYzfQ.2VVrXtciBAJ7_qDX2m8v8X-YA0TXEY4nLOYO--yDfCA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/veterinarios",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"veterinarios"
+							]
+						},
+						"description": "Retorna todos os veterinários cadastrados na base de dados.\n\nApenas Admin tem acesso."
+					},
+					"response": []
+				},
+				{
+					"name": "Buscar veterinario por id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIyIiwiaXNzIjoiUHJvZ3JhbWFTVEFSVEVSIiwiZXhwIjoxNjU5MDM5MjYzfQ.2VVrXtciBAJ7_qDX2m8v8X-YA0TXEY4nLOYO--yDfCA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/veterinarios/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"veterinarios",
+								"1"
+							]
+						},
+						"description": "Retorna dados do veterinário informado no endpoint.\n\nApenas Admin tem acesso."
+					},
+					"response": []
+				},
+				{
+					"name": "Buscar veterinario por nome",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIyIiwiaXNzIjoiUHJvZ3JhbWFTVEFSVEVSIiwiZXhwIjoxNjU5MDM5MjYzfQ.2VVrXtciBAJ7_qDX2m8v8X-YA0TXEY4nLOYO--yDfCA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/veterinarios/nome/tatiane",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"veterinarios",
+								"nome",
+								"tatiane"
+							]
+						},
+						"description": "Busca de veterinários por nome ou parte dele.\n\nDisponível apenas para Admin."
+					},
+					"response": []
+				},
+				{
+					"name": "Listar atendimentos por id de veterinario",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIyIiwiaXNzIjoiUHJvZ3JhbWFTVEFSVEVSIiwiZXhwIjoxNjU5MDM5MjYzfQ.2VVrXtciBAJ7_qDX2m8v8X-YA0TXEY4nLOYO--yDfCA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/veterinarios/listarAtendimentos/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"veterinarios",
+								"listarAtendimentos",
+								"1"
+							]
+						},
+						"description": "Lista todos os atendimentos de um veterinário.\n\nApenas Admin tem acesso."
+					},
+					"response": []
+				},
+				{
+					"name": "Alterar veterinario",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIyIiwiaXNzIjoiUHJvZ3JhbWFTVEFSVEVSIiwiZXhwIjoxNjU5MDM5MjYzfQ.2VVrXtciBAJ7_qDX2m8v8X-YA0TXEY4nLOYO--yDfCA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"id\": 1,\r\n        \"crmv\": \"652-92\",\r\n        \"nome\": \"Tatiane Nóbrega\",\r\n        \"telefone\": \"(85)999721891\",\r\n        \"email\": \"tatianenobrega@gmail.com\",\r\n        \"especialidade\": \"Radiologista\",\r\n        \"listaAtendimentos\": []\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/veterinarios/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"veterinarios",
+								"1"
+							]
+						},
+						"description": "Altera dados de um veterinário.\n\nSó é possível alterar um CRMV se o novo número informado não estiver cadastrado na base de dados para outro profissional.\n\nApenas Admin tem acesso."
+					},
+					"response": []
+				},
+				{
+					"name": "Deletar veterinario",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIyIiwiaXNzIjoiUHJvZ3JhbWFTVEFSVEVSIiwiZXhwIjoxNjU5MDM5MjYzfQ.2VVrXtciBAJ7_qDX2m8v8X-YA0TXEY4nLOYO--yDfCA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/veterinarios/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"veterinarios",
+								"1"
+							]
+						},
+						"description": "Só é possível deletar um veterinário caso ele não esteja associado a nenhum atendimento. Nesse caso, delete primeiro os atendimentos associados para só então deletar o veterinário.\n\nApenas Admin tem acesso."
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Atendimento",
+			"item": [
+				{
+					"name": "Novo atendimento",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxIiwiaXNzIjoiUHJvZ3JhbWFTVEFSVEVSIiwiZXhwIjoxNjU5MDQyMzQxfQ.VY7knoAv0PspStgDH33OMmM4hTUiHq-f5cu7r2cYr_0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"cachorro\": {\r\n        \"id\": 1,\r\n        \"nome\": \"bidu\",\r\n        \"tutor\": {\r\n            \"id\": 1,\r\n            \"cpf\": \"052.042.883-85\",\r\n            \"nome\": \"Joana Darc dos Santos\",\r\n            \"telefone\": \"(85)98775-3520\",\r\n            \"email\": \"user1@email.com\"\r\n        },\r\n        \"nascimento\": \"20/01/2019\",\r\n        \"raca\": \"SRD\",\r\n        \"informacoes\": \"Paciente saudável, peso 13kg, altura 55cm\"\r\n    },\r\n    \"tutor\": {\r\n        \"id\": 1,\r\n        \"cpf\": \"052.042.883-85\",\r\n        \"nome\": \"Joana Darc dos Santos\",\r\n        \"telefone\": \"(85)98775-3520\",\r\n        \"email\": \"user1@email.com\"\r\n        },\r\n    \"veterinario\": {\r\n        \"id\": 1,\r\n        \"crmv\": \"253-36 CE\",\r\n        \"nome\": \"Tatiane Nobrega\",\r\n        \"telefone\": \"(85)98888-7777\",\r\n        \"email\": \"vet1@vet.com\",\r\n        \"especialidade\": \"Oftalmologista\"\r\n    },    \r\n    \"dadosAnimal\": \"Peso:10kg, Altura: 50cm, Circunferência Abdominal:45cm\",\r\n    \"diagnostico\": \"Animal saudável\",\r\n    \"comentarios\": \"Completar o calendário vacinal; Retorna em 6 meses para acompanhamento de rotina. Receituário: Coleira Escalibour\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/atendimentos",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"atendimentos"
+							]
+						},
+						"description": "Cria novo atendimento.\n\nApenas Admin tem acesso."
+					},
+					"response": []
+				},
+				{
+					"name": "Buscar todos os atendimentos",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxIiwiaXNzIjoiUHJvZ3JhbWFTVEFSVEVSIiwiZXhwIjoxNjU5MDQyMzQxfQ.VY7knoAv0PspStgDH33OMmM4hTUiHq-f5cu7r2cYr_0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/atendimentos",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"atendimentos"
+							]
+						},
+						"description": "Retorna todos os atendimentos já cadastrados e que não foram excluídos.\n\nDisponível apenas para Admin."
+					},
+					"response": []
+				},
+				{
+					"name": "Buscar atendimento por id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxIiwiaXNzIjoiUHJvZ3JhbWFTVEFSVEVSIiwiZXhwIjoxNjU5MDQyMzQxfQ.VY7knoAv0PspStgDH33OMmM4hTUiHq-f5cu7r2cYr_0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/atendimentos/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"atendimentos",
+								"1"
+							]
+						},
+						"description": "Retorna os dados de um determinado atendimento.\n\nApenas Admin tem acesso."
+					},
+					"response": []
+				},
+				{
+					"name": "Deletar atendimento",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxIiwiaXNzIjoiUHJvZ3JhbWFTVEFSVEVSIiwiZXhwIjoxNjU5MDQyMzQxfQ.VY7knoAv0PspStgDH33OMmM4hTUiHq-f5cu7r2cYr_0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/atendimentos/4",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"atendimentos",
+								"4"
+							]
+						},
+						"description": "Deleta um atendimento para que seja possível deletar um cliente, cachorro ou veterinário associado.\n\nTodos os atendimentos deletados são mantidos no arquivo morto.\n\nApenas Admins podem deletar atendimentos."
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Arquivo Morto",
+			"item": [
+				{
+					"name": "Buscar todos os atendimentos arquivados",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxIiwiaXNzIjoiUHJvZ3JhbWFTVEFSVEVSIiwiZXhwIjoxNjU5MDQyMzQxfQ.VY7knoAv0PspStgDH33OMmM4hTUiHq-f5cu7r2cYr_0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/arquivoMorto",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"arquivoMorto"
+							]
+						},
+						"description": "Retorna os dados de todos os atendimentos já excluídos.\n\nApenas Admin tem acesso."
+					},
+					"response": []
+				},
+				{
+					"name": "Buscar atendimento arquivado por id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxIiwiaXNzIjoiUHJvZ3JhbWFTVEFSVEVSIiwiZXhwIjoxNjU5MDQyMzQxfQ.VY7knoAv0PspStgDH33OMmM4hTUiHq-f5cu7r2cYr_0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/arquivoMorto/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"arquivoMorto",
+								"1"
+							]
+						},
+						"description": "Retorna dados de um determinado atendimento excluído.\n\nApenas Admin tem acesso."
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Autenticação",
+			"item": [
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"vet1@gft.com\",\r\n    \"senha\": \"1234\"\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/auth",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"auth"
+							]
+						},
+						"description": "Usuários cadastrados na base de dados disponíveis:\n\n[vet1@gft.com](mailto:vet1@gft.com) (perfil Admin)\n\n[vet2@gft.com](mailto:vet2@gft.com) (perfil Admin)\n\n[cliente1@email.com](mailto:cliente1@email.com) (perfil User - Cliente id 1)\n\n[cliente2@email.com](mailto:cliente2@email.com) (perfil User - Cliente id 2)\n\nSenha igual para todos: 1234\n\nO token gerado deve ser utilizado em todas as requisições."
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "bearer"
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
